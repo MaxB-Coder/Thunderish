@@ -110,4 +110,4 @@ Technologies:
 
 *Front-end: HTML, CSS, JavaScript (React)
 Back-end: Node.js, Express.js (for API integration)
-Weather API: OpenWeatherMap, Weatherstack, or similar*
+Weather API: Meteomatics
