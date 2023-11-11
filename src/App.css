@@ -3,8 +3,10 @@
   font-family: 'Open Sans', sans-serif;
   --text-primary: #9e9c9c;
   --text-secondary: #AACFD0;
+  --text-tertiary: #0088a9;
   --bg-primary: #FFFFFF;
   --bg-secondary: #dddddd;
+  background-image: (https://www.google.com/url?sa=i&url=https%3A%2F%2Fwallpapers.com%2Fgrey-gradient-background&psig=AOvVaw3Fq2HB-Dn7NSrHJpjjZCsu&ust=1699736253291000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNDbu5CpuoIDFQAAAAAdAAAAABAJ);
 }
 
 body {
@@ -32,11 +34,62 @@ body {
 }
 
 .home:hover {
-  color: #0088a9;
+  color: var(--text-tertiary);
+}
+
+.searchSubmit:hover {
+  color: var(--bg-secondary);
+  background-color: var(--text-tertiary);
+  transition: all 0.3s ease 0s;
+}
+
+.searchName:hover {
+  
 }
 
 .logo {
   cursor: pointer;
   max-width: 100%;
   max-height: 12vh;
+}
+
+.main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 4vh;
+}
+
+.search{
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  border-radius: 100px;
+  padding: 10px 20px;
+  transition: all 0.3s ease 0s;
+  margin-left: 9vh;
+}
+
+.searchSubmit{
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  border-radius: 100px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  margin-left: 1vh;
+}
+
+.searchImage {
+  margin-top: 2vh;
+  max-width: 100%;
+  max-height: 70vh;
+  border: 2px solid var(--text-secondary);
+  border-radius: 1%;
+}
+
+.searchName {
+  
 }
