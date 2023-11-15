@@ -16,25 +16,12 @@ body {
 
 .header { 
   position: sticky;
-  display: flex-column;
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 0px 2%;
+  padding-bottom: 1vh;
   background-color: var(--bg-primary);
-}
-
-
-.home {
-  cursor: pointer;
-  height: 5vh;
-  padding-right: 40%;
-  padding-bottom: 2%;
-  transition: all 0.3s ease 0s;
-  color:var(--text-secondary)
-}
-
-.home:hover {
-  color: var(--text-tertiary);
 }
 
 .searchSubmit:hover {
@@ -50,25 +37,26 @@ body {
 .logo {
   cursor: pointer;
   max-width: 100%;
-  max-height: 12vh;
+  max-height: 9vh;
+  margin: auto;
 }
 
 .main{
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding-top: 4vh;
 }
 
-.search{
+.search {
+  margin: auto;
+  padding-right: 3vw;
+}
+
+.searchBox{
   background-color: var(--bg-secondary);
   color: var(--text-primary);
   border: 1px solid var(--text-primary);
   border-radius: 100px;
   padding: 10px 20px;
   transition: all 0.3s ease 0s;
-  margin-left: 9vh;
 }
 
 .searchSubmit{
@@ -83,13 +71,14 @@ body {
 }
 
 .searchImage {
-  margin-top: 2vh;
-  max-width: 100%;
-  max-height: 70vh;
+  background-size: cover;
   border: 2px solid var(--text-secondary);
   border-radius: 1%;
 }
 
 .searchName {
-  
+  background-color: var(--bg-secondary);
+  text-align: center;
+  padding: 1vh;
+  color: var(--text-primary);
 }
