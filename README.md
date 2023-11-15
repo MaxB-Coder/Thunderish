@@ -26,7 +26,7 @@ So that I know if I need to wear extra layers.
 | -------------- | -------------------- | ---------------- | ---------------------------- |
 | WeatherReading | temperature(@Object) | getTemperature() | WeatherReading(@temperature) |
 
-#####Tests
+##### Tests
 
 1. Check that the correct temperature is displayed.
 
@@ -40,7 +40,7 @@ So that I know if it's safe to go out.
 | -------------- | ------------------------- | --------------------- | --------------------------------- |
 | WeatherReading | weatherCondition(@Object) | getWeatherCondition() | WeatherReading(@weatherCondition) |
 
-#####Tests
+##### Tests
 
 1. Check that the correct condition is displayed.
 
@@ -54,7 +54,7 @@ So that the app is more visually appealing.
 | -------------- | -------------------- | ---------------- | ---------------------------- |
 | WeatherReading | weatherIcon(@Object) | getWeatherIcon() | WeatherReading(@weatherIcon) |
 
-#####Tests
+##### Tests
 
 1. Check that the correct weather icon is displayed.
 
@@ -70,7 +70,7 @@ So that I can see the local data.
 | --------------- | ----------------- | ------------- | ------------------ |
 | WeatherForecast | location(@Object) | getLocation() | Weather(@location) |
 
-#####Tests
+##### Tests
 
 1. Check that the correct location is displayed
 
@@ -86,7 +86,7 @@ So that I can make plans with piece of mind.
 | --------------- | --------------------------------- | ------------- | -------------------------- |
 | WeatherForecast | Forecast(@array[@weatherReading]) | getForecast() | WeatherForecast(@Forecast) |
 
-#####Tests
+##### Tests
 
 1. Check that the correct five day weather forecast is displayed.
 
@@ -102,7 +102,7 @@ So that I can accurately see when the weather is changing.
 | --------------- | ---------- | ------------ | ---------------------------------------------------------- |
 | WeatherForecast |            | getWeather() | WeatherReading(@temperature, @condition, @location, @icon) |
 
-#####Tests
+##### Tests
 
 1. Check that the weather is updated every 10s.
 

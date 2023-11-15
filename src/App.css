@@ -6,22 +6,24 @@
   --text-tertiary: #0088a9;
   --bg-primary: #FFFFFF;
   --bg-secondary: #dddddd;
-  background-image: (https://www.google.com/url?sa=i&url=https%3A%2F%2Fwallpapers.com%2Fgrey-gradient-background&psig=AOvVaw3Fq2HB-Dn7NSrHJpjjZCsu&ust=1699736253291000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCNDbu5CpuoIDFQAAAAAdAAAAABAJ);
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)), url(https://media.cntraveler.com/photos/63483e15ef943eff59de603a/master/pass/New%20York%20City_GettyImages-1347979016.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
 }
 
 body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  color: var(--bg-primary);
 }
 
-.header { 
-  position: sticky;
+.footer {
+  position: fixed;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 0px 2%;
-  padding-bottom: 1vh;
-  background-color: var(--bg-primary);
+  bottom: 10px;
+  width: 100%;
 }
 
 .searchSubmit:hover {
@@ -30,9 +32,9 @@ body {
   transition: all 0.3s ease 0s;
 }
 
-.searchName:hover {
+/* .searchName:hover {
   
-}
+} */
 
 .logo {
   cursor: pointer;
@@ -41,13 +43,13 @@ body {
   margin: auto;
 }
 
-.main{
+.header{
   display: flex;
 }
 
 .search {
+  padding-top: 8vh;
   margin: auto;
-  padding-right: 3vw;
 }
 
 .searchBox{
@@ -55,7 +57,7 @@ body {
   color: var(--text-primary);
   border: 1px solid var(--text-primary);
   border-radius: 100px;
-  padding: 10px 20px;
+  padding: 10px 30px;
   transition: all 0.3s ease 0s;
 }
 
@@ -64,7 +66,7 @@ body {
   color: var(--text-primary);
   border: 1px solid var(--text-primary);
   border-radius: 100px;
-  padding: 10px 20px;
+  padding: 10px 30px;
   cursor: pointer;
   transition: all 0.3s ease 0s;
   margin-left: 1vh;
@@ -77,8 +79,46 @@ body {
 }
 
 .searchName {
-  background-color: var(--bg-secondary);
   text-align: center;
-  padding: 1vh;
-  color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.fiveDayForecast {
+  color: var(--bg-primary);
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: 15vw;
+  margin-bottom: 7vh;
+}
+
+.forecastDay {
+  margin: 3vh;
+}
+
+.currentTemp {
+  color: var(--bg-primary);
+  margin-right: auto;
+  margin-left: 15vw;
+}
+
+.conditionToday {
+  max-width: 100%;
+  max-height: 10vh;
+  margin-left: 2vw;
+  margin-top: 3vh;
+}
+
+.today {
+  display: flex;
+  margin-top: 5vh;
+}
+
+.forecastDayIcon {
+  max-width: 100%;
+  max-height: 5vh;
 }

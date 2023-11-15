@@ -26,3 +26,13 @@ We wish you a lot of fun with the Basic API package from Meteomatics!
 Your Meteomatics API Team
 
 api.meteomatics.com/validdatetime/parameters/locations/format?optionals
+
+Mandatory
+
+- 5 day forecast
+- location (must include name)
+- temperature
+
+Optional
+
+- symbol
