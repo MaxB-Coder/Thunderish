@@ -18,6 +18,11 @@ body {
   color: var(--bg-primary);
 }
 
+.blurred {
+  filter: blur(3px);
+  overflow: hidden;
+}
+
 .footer {
   position: fixed;
   display: flex;

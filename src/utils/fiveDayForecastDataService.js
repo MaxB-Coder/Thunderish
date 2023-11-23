@@ -1,6 +1,6 @@
-// import axios from 'axios';
+import axios from 'axios';
 
-// export const getProducts = async () => {
+// export const getFiveDayForecast = async () => {
 //     try {
 //         const responseData = await axios.get(`http://localhost:3000/products`);
 //         return responseData.data;
