@@ -16,6 +16,8 @@ Features to Implement:
 
 *User-friendly interface displaying current weather conditions with temperature, conditions, and icons.*
 
+#### User Story 1
+
 ```
 As a user,
 I want the weather forecast to show the temperature,
@@ -29,6 +31,8 @@ So that I know if I need to wear extra layers.
 ##### Tests
 
 1. Check that the correct temperature is displayed.
+
+#### User Story 2
 
 ```
 As a user,
@@ -44,6 +48,8 @@ So that I know if it's safe to go out.
 
 1. Check that the correct condition is displayed.
 
+#### User Story 3
+
 ```
 As a user,
 I want the weather forecast to use icons,
@@ -57,6 +63,8 @@ So that the app is more visually appealing.
 ##### Tests
 
 1. Check that the correct weather icon is displayed.
+
+#### User Story 4
 
 *Location-based weather data retrieval.*
 
@@ -74,6 +82,8 @@ So that I can see the local data.
 
 1. Check that the correct location is displayed
 
+#### User Story 5
+
 *5-day weather forecast with temperature, conditions, and icons.*
 
 ```
@@ -89,6 +99,8 @@ So that I can make plans with piece of mind.
 ##### Tests
 
 1. Check that the correct five day weather forecast is displayed.
+
+#### User Story 6
 
 *Real-time updates of weather conditions.*
 
