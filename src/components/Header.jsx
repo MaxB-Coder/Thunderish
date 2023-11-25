@@ -1,7 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
-
-export const Header = () => {
+export const Header = ({ weatherData }) => {
   return (
     <div className="header">
       <form action="" className='search'>
