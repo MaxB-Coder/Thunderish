@@ -2,25 +2,28 @@ import { useCallback, useEffect, useState } from 'react';
 import '../public/Thunderish.png';
 import './App.css';
 
-import { getWeather } from "./utils/WeatherDataService.js"
+import { getWeather } from './utils/WeatherDataService.js';
 import { Header } from './components/Header.jsx';
 import { Footer } from './components/Footer.jsx';
 
-
 function App() {
-
   const [weatherData, setWeatherData] = useState({});
+  const [searchText, setSearchText] = useState(``);
 
-  const getData = async() => {
+  const getData = async () => {
     try {
-      const data = await getWeather(41, 74, Intl.DateTimeFormat().resolvedOptions().timeZone)
+      const data = await getWeather(
+        41,
+        74,
+        Intl.DateTimeFormat().resolvedOptions().timeZone
+      );
       setWeatherData(data);
       console.log(data);
-    } catch(e) {
+    } catch (e) {
       console.error(e);
       setWeatherData({});
     }
-  }
+  };
 
   // const [currentWeatherData, setCurrentWeather] = useState([]);
   useEffect(() => {
@@ -29,10 +32,14 @@ function App() {
 
   return (
     <>
-      <Header weatherData={weatherData}/>
-      <Footer weatherData={weatherData}/>
+      <Header
+        weatherData={weatherData}
+        searchText={searchText}
+        setSearchText={setSearchText}
+      />
+      <Footer weatherData={weatherData} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
