@@ -58,9 +58,9 @@ function App() {
           searchText={searchText}
           setSearchText={setSearchText}
         />
-        <div style={{ height: '100vh', width: '100vh' }}>
+        {/* <div style={{ height: '100vh', width: '100vh' }}>
           <Map zoom={9} center={position}></Map>
-        </div>
+        </div> */}
         <Footer weatherData={weatherData} />
       </APIProvider>
     </>
