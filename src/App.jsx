@@ -12,73 +12,33 @@ function App() {
   const [placeData, setPlaceData] = useState({});
   const [searchText, setSearchText] = useState('');
 
-  // const getData = useCallback(() => {
-  const getPlace = async (searchText) => {
+  const getData = async () => {
     try {
       let placeData;
       if (searchText === '') {
         placeData = await getPlaceData('New York');
       } else {
-        // placeData = await getPlaceData(searchText);
+        placeData = await getPlaceData(searchText);
       }
-      console.log(placeData);
-    } catch (e) {
-      console.error(e);
-      setPlaceData({});
-    }
-  };
-
-  const getWeather = async () => {
-    try {
-      const data = await getWeatherData(
+      const wData = await getWeatherData(
         placeData?.parsedData?.lat,
         placeData?.parsedData?.lon,
         Intl.DateTimeFormat().resolvedOptions().timeZone
       );
-      setWeatherData(data);
+      console.log(wData);
+      await setPlaceData(placeData);
+      await setWeatherData(wData);
+      console.log(placeData);
     } catch (e) {
       console.error(e);
+      setPlaceData({});
       setWeatherData({});
     }
   };
-  // }, [placeData]);
 
   useEffect(() => {
-    // const getPlace = async (searchText) => {
-    //   try {
-    //     let placeData;
-    //     if (searchText === '') {
-    //       placeData = await getPlaceData('New York');
-    //     } else {
-    //       // placeData = await getPlaceData(searchText);
-    //     }
-    //     console.log(placeData);
-    //   } catch (e) {
-    //     console.error(e);
-    //     setPlaceData({});
-    //   }
-    // };
-
-    // const getWeather = async () => {
-    //   try {
-    //     const data = await getWeatherData(
-    //       placeData?.parsedData?.lat,
-    //       placeData?.parsedData?.lon,
-    //       Intl.DateTimeFormat().resolvedOptions().timeZone
-    //     );
-    //     setWeatherData(data);
-    //   } catch (e) {
-    //     console.error(e);
-    //     setWeatherData({});
-    //   }
-    // };
-    console.log(`Search:${searchText}`);
-    console.log(`Place data:`);
-    console.log(placeData);
-    console.log(`Weather data:`);
-    console.log(weatherData);
-    // getData();
-  }, [searchText, placeData, weatherData, getWeather]);
+    getData();
+  }, [searchText]);
 
   return (
     <>
@@ -87,7 +47,7 @@ function App() {
         searchText={searchText}
         setSearchText={setSearchText}
       />
-      <Footer weatherData={weatherData} placeName={placeData.parsedData} />
+      <Footer weatherData={weatherData} placeData={placeData} />
     </>
   );
 }
