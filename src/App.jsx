@@ -1,22 +1,38 @@
-import { useRef, useEffect, useState } from 'react';
-import { APIProvider, Map, useAutocomplete } from '@vis.gl/react-google-maps';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import '../public/Thunderish.png';
 import './App.css';
 
-import { getWeather } from './utils/weatherDataService.js';
+import { getWeatherData } from './utils/weatherDataService.js';
+import { getPlaceData } from './utils/placesDataService.js';
 import { Header } from './components/Header.jsx';
 import { Footer } from './components/Footer.jsx';
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
-  const [searchText, setSearchText] = useState(``);
-  const inputRef = useRef(null);
+  const [placeData, setPlaceData] = useState({});
+  const [searchText, setSearchText] = useState('');
 
-  const getData = async () => {
+  // const getData = useCallback(() => {
+  const getPlace = async (searchText) => {
     try {
-      const data = await getWeather(
-        41,
-        74,
+      let placeData;
+      if (searchText === '') {
+        placeData = await getPlaceData('New York');
+      } else {
+        // placeData = await getPlaceData(searchText);
+      }
+      console.log(placeData);
+    } catch (e) {
+      console.error(e);
+      setPlaceData({});
+    }
+  };
+
+  const getWeather = async () => {
+    try {
+      const data = await getWeatherData(
+        placeData?.parsedData?.lat,
+        placeData?.parsedData?.lon,
         Intl.DateTimeFormat().resolvedOptions().timeZone
       );
       setWeatherData(data);
@@ -25,44 +41,53 @@ function App() {
       setWeatherData({});
     }
   };
-
-  // const onPlaceChanged = (place) => {
-  //   if (place) {
-  //     setSearchText(place.formatted_address || place.name);
-  //   }
-
-  //   // Keep focus on input element
-  //   inputRef.current && inputRef.current.focus();
-  // };
-
-  // useAutocomplete({
-  //   inputField: inputRef && inputRef.current,
-  //   onPlaceChanged,
-  // });
+  // }, [placeData]);
 
   useEffect(() => {
-    getData();
-  }, []);
+    // const getPlace = async (searchText) => {
+    //   try {
+    //     let placeData;
+    //     if (searchText === '') {
+    //       placeData = await getPlaceData('New York');
+    //     } else {
+    //       // placeData = await getPlaceData(searchText);
+    //     }
+    //     console.log(placeData);
+    //   } catch (e) {
+    //     console.error(e);
+    //     setPlaceData({});
+    //   }
+    // };
 
-  const position = { lat: 53.54, lng: 10 };
+    // const getWeather = async () => {
+    //   try {
+    //     const data = await getWeatherData(
+    //       placeData?.parsedData?.lat,
+    //       placeData?.parsedData?.lon,
+    //       Intl.DateTimeFormat().resolvedOptions().timeZone
+    //     );
+    //     setWeatherData(data);
+    //   } catch (e) {
+    //     console.error(e);
+    //     setWeatherData({});
+    //   }
+    // };
+    console.log(`Search:${searchText}`);
+    console.log(`Place data:`);
+    console.log(placeData);
+    console.log(`Weather data:`);
+    console.log(weatherData);
+    // getData();
+  }, [searchText, placeData, weatherData, getWeather]);
 
   return (
     <>
-      <APIProvider
-        apiKey={import.meta.env.VITE_GOOGLE_MAPS_KEY}
-        libraries={['places']}
-      >
-        <Header
-          weatherData={weatherData}
-          inputRef={inputRef}
-          searchText={searchText}
-          setSearchText={setSearchText}
-        />
-        {/* <div style={{ height: '100vh', width: '100vh' }}>
-          <Map zoom={9} center={position}></Map>
-        </div> */}
-        <Footer weatherData={weatherData} />
-      </APIProvider>
+      <Header
+        weatherData={weatherData}
+        searchText={searchText}
+        setSearchText={setSearchText}
+      />
+      <Footer weatherData={weatherData} placeName={placeData.parsedData} />
     </>
   );
 }

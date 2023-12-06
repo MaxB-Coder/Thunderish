@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getWeather(lat, lon, timezone) {
+export function getWeatherData(lat, lon, timezone) {
   try {
     return axios
       .get(

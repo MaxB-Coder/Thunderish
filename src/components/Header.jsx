@@ -1,9 +1,4 @@
-export const Header = ({
-  weatherData,
-  inputRef,
-  searchText,
-  setSearchText,
-}) => {
+export const Header = ({ weatherData, searchText, setSearchText }) => {
   return (
     <div className='header'>
       <form action='' className='search'>
@@ -11,7 +6,6 @@ export const Header = ({
           id='searchBox'
           className='searchBox'
           placeholder='Location...'
-          ref={inputRef}
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         ></input>
@@ -19,7 +13,7 @@ export const Header = ({
           className='searchSubmit'
           type='submit'
           value='Search'
-          formAction='url'
+          formAction={setSearchText(searchText)}
         />
       </form>
     </div>

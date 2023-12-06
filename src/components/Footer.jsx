@@ -1,6 +1,6 @@
 import { ICON_MAP } from '../utils/iconMap.js';
 
-export const Footer = ({ weatherData }) => {
+export const Footer = ({ weatherData, searchText }) => {
   const current = weatherData?.current;
   const daily = weatherData?.daily;
 
@@ -14,7 +14,7 @@ export const Footer = ({ weatherData }) => {
     <div className='footer'>
       <div className='today'>
         <div className='currentTemp'>
-          <h2 className='searchName'>New York</h2>
+          <h2 className='searchName'>{}</h2>
           <h1>{Math.round(current?.currentTemp)}&deg;C</h1>
         </div>
         <img
