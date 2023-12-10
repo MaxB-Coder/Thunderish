@@ -2,16 +2,29 @@
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
   --text-primary: #9e9c9c;
-  --text-secondary: #AACFD0;
+  --text-secondary: #aacfd0;
   --text-tertiary: #0088a9;
-  --bg-primary: #FFFFFF;
+  --bg-primary: #ffffff;
   --bg-secondary: #dddddd;
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)), url(https://media.cntraveler.com/photos/63483e15ef943eff59de603a/master/pass/New%20York%20City_GettyImages-1347979016.jpg);
+  /* background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.2)
+    ),
+    url(https://i.pinimg.com/originals/c8/a1/39/c8a13970d0a773fb8b14746669a1a570.gif);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 100%;
+  height: 100%; */
+}
+
+#background {
+  background-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.2)
+  );
 }
 
 body {
@@ -48,7 +61,7 @@ body {
   margin: auto;
 }
 
-.header{
+.header {
   display: flex;
 }
 
@@ -57,7 +70,7 @@ body {
   margin: auto;
 }
 
-.searchBox{
+.searchBox {
   background-color: var(--bg-secondary);
   color: var(--text-primary);
   border: 1px solid var(--text-primary);
@@ -66,7 +79,7 @@ body {
   transition: all 0.3s ease 0s;
 }
 
-.searchSubmit{
+.searchSubmit {
   background-color: var(--bg-secondary);
   color: var(--text-primary);
   border: 1px solid var(--text-primary);

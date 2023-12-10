@@ -13,6 +13,8 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@geoapify/geocoder-autocomplete": "^2.0.1",
+    "@geoapify/react-geocoder-autocomplete": "^2.0.0",
     "@googlemaps/js-api-loader": "^1.16.2",
     "@react-google-maps/api": "^2.19.2",
     "@vis.gl/react-google-maps": "^0.4.1",

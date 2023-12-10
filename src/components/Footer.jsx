@@ -19,13 +19,15 @@ export const Footer = ({ weatherData, placeData }) => {
             {placeData?.parsedData?.city ? placeName : 'Searching...'}
           </h2>
           <h1>
-            {placeData?.parsedData?.city ? Math.round(current?.currentTemp) : 0}
+            {placeData?.parsedData?.city
+              ? Math.round(current?.currentTemp)
+              : '-'}
             &deg;C
           </h1>
         </div>
         <img
           className='conditionToday'
-          src={getIcon(current?.iconCode)}
+          src={placeData?.parsedData?.city ? getIcon(current?.iconCode) : 0}
           alt='weather condition'
         />
       </div>
@@ -36,12 +38,14 @@ export const Footer = ({ weatherData, placeData }) => {
           <br />
           <img
             className='forecastDayIcon'
-            src={getIcon(daily?.[1]?.iconCode)}
+            src={getIcon(
+              placeData?.parsedData?.city ? daily?.[1]?.iconCode : 0
+            )}
             alt='weather condition'
           />
           <br />
           <br />
-          {daily?.[1]?.forecastTemp}&deg;C
+          {placeData?.parsedData?.city ? daily?.[1]?.forecastTemp : '-'}&deg;C
         </li>
         <li className='forecastDay'>
           {DAY_FORMATTER.format(daily?.[2]?.timestamp)}
@@ -49,12 +53,14 @@ export const Footer = ({ weatherData, placeData }) => {
           <br />
           <img
             className='forecastDayIcon'
-            src={getIcon(daily?.[2]?.iconCode)}
+            src={getIcon(
+              placeData?.parsedData?.city ? daily?.[2]?.iconCode : 0
+            )}
             alt='weather condition'
           />
           <br />
           <br />
-          {daily?.[2]?.forecastTemp}&deg;C
+          {placeData?.parsedData?.city ? daily?.[2]?.forecastTemp : '-'}&deg;C
         </li>
         <li className='forecastDay'>
           {DAY_FORMATTER.format(daily?.[3]?.timestamp)}
@@ -62,12 +68,14 @@ export const Footer = ({ weatherData, placeData }) => {
           <br />
           <img
             className='forecastDayIcon'
-            src={getIcon(daily?.[3]?.iconCode)}
+            src={getIcon(
+              placeData?.parsedData?.city ? daily?.[3]?.iconCode : 0
+            )}
             alt='weather condition'
           />
           <br />
           <br />
-          {daily?.[3]?.forecastTemp}&deg;C
+          {placeData?.parsedData?.city ? daily?.[3]?.forecastTemp : '-'}&deg;C
         </li>
         <li className='forecastDay'>
           {DAY_FORMATTER.format(daily?.[4]?.timestamp)}
@@ -75,12 +83,14 @@ export const Footer = ({ weatherData, placeData }) => {
           <br />
           <img
             className='forecastDayIcon'
-            src={getIcon(daily?.[4]?.iconCode)}
+            src={getIcon(
+              placeData?.parsedData?.city ? daily?.[4]?.iconCode : 0
+            )}
             alt='weather condition'
           />
           <br />
           <br />
-          {daily?.[4]?.forecastTemp}&deg;C
+          {placeData?.parsedData?.city ? daily?.[4]?.forecastTemp : '-'}&deg;C
         </li>
       </ul>
     </div>
