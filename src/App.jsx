@@ -8,6 +8,13 @@ import { getPlaceImageData } from './utils/placesDataService.js';
 import { Header } from './components/Header.jsx';
 import { Footer } from './components/Footer.jsx';
 
+// import './backgrounds/cloud-bolt.jpg';
+// import './backgrounds/cloud-showers-heavy.jpg';
+// import './backgrounds/cloud-sun.jpg';
+// import './backgrounds/cloud.jpg';
+// import './backgrounds/smog.jpg';
+// import './backgrounds/snow.jpg';
+
 import { BACKGROUND_MAP } from './utils/backgroundMap.js';
 
 function App() {
@@ -63,27 +70,29 @@ function App() {
 
   return (
     <>
-      <div
-        id='background'
-        style={{
-          backgroundImage: `url(${
-            placeData?.parsedData?.city
-              ? getBackground(weatherData?.current?.iconCode)
-              : 'https://i.pinimg.com/originals/c8/a1/39/c8a13970d0a773fb8b14746669a1a570.gif'
-          })`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          height: '100vh',
-          width: '100%',
-        }}
-      >
-        <Header
-          weatherData={weatherData}
-          searchText={searchText}
-          setSearchText={setSearchText}
-        />
-        <Footer weatherData={weatherData} placeData={placeData} />
+      <div id='gradient'>
+        <body
+          id='background'
+          className='body'
+          style={{
+            backgroundImage: `linear-gradient(
+              0deg,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.1)
+            ), url(${
+              placeData?.parsedData?.city
+                ? getBackground(weatherData?.current?.iconCode)
+                : 'https://i.pinimg.com/originals/c8/a1/39/c8a13970d0a773fb8b14746669a1a570.gif'
+            })`,
+          }}
+        >
+          <Header
+            weatherData={weatherData}
+            searchText={searchText}
+            setSearchText={setSearchText}
+          />
+          <Footer weatherData={weatherData} placeData={placeData} />
+        </body>
       </div>
     </>
   );
