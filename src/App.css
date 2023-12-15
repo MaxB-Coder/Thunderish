@@ -74,18 +74,15 @@
 
 .searchSubmit {
   background-color: var(--bg-secondary);
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
+  /* text-align: center; */
   border: 1px solid var(--text-primary);
   border-radius: 100px;
-  padding: 20px 30px;
-  cursor: pointer;
-  transition: all 0.3s ease 0s;
   margin-left: 1vh;
-}
-
-.searchName {
-  text-align: center;
-  color: var(--bg-primary);
+  height: 37px;
+  width: 90px;
+  /* min-height: 100%; */
+  transition: all 0.3s ease 0s;
 }
 
 .fiveDayForecast {
@@ -97,33 +94,45 @@
   align-items: center;
   text-align: center;
   margin-left: auto;
-  margin-right: 15vw;
-  margin-bottom: 7vh;
+  margin-right: 5vh;
+  margin-bottom: 10vh;
 }
 
 .forecastDay {
   margin: 3vh;
 }
 
-.currentTemp {
-  color: var(--bg-primary);
-  margin-right: auto;
-  margin-left: 15vw;
-}
-
-.conditionToday {
-  max-width: 100%;
-  max-height: 10vh;
-  margin-left: 2vw;
-  margin-top: 3vh;
-}
-
-.today {
-  display: flex;
-  margin-top: 5vh;
-}
-
 .forecastDayIcon {
   max-width: 100%;
   max-height: 5vh;
+}
+
+.currentDay {
+  display: flex-column;
+  color: var(--bg-primary);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+}
+
+.searchName {
+  text-align: center;
+  color: var(--bg-primary);
+  margin-bottom: 1vh;
+  font-size: 10em;
+}
+
+.currentIconAndTemp {
+  display: flex;
+  justify-content: end;
+  max-height: 5vh;
+}
+
+.conditionToday {
+  margin-left: 85%;
+}
+
+.searchTemp {
+  font-size: 2em;
 }

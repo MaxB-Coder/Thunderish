@@ -13,24 +13,24 @@ export const Footer = ({ weatherData, placeData }) => {
 
   return (
     <div className='footer'>
-      <div className='today'>
+      {/* <div className='today'>
         <div className='currentTemp'>
+          <img
+            className='conditionToday'
+            src={placeData?.parsedData?.city ? getIcon(current?.iconCode) : 0}
+            alt='weather condition'
+          />
           <h2 className='searchName'>
             {placeData?.parsedData?.city ? placeName : 'Searching...'}
           </h2>
-          <h1>
+          <h1 className='searchTemp'>
             {placeData?.parsedData?.city
               ? Math.round(current?.currentTemp)
               : '-'}
             &deg;C
           </h1>
         </div>
-        <img
-          className='conditionToday'
-          src={placeData?.parsedData?.city ? getIcon(current?.iconCode) : 0}
-          alt='weather condition'
-        />
-      </div>
+      </div> */}
       <ul className='fiveDayForecast'>
         <li className='forecastDay'>
           {DAY_FORMATTER.format(daily?.[1]?.timestamp)}

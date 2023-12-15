@@ -6,6 +6,7 @@ import { getWeatherData } from './utils/weatherDataService.js';
 import { getPlaceData } from './utils/placesDataService.js';
 import { getPlaceImageData } from './utils/placesDataService.js';
 import { Header } from './components/Header.jsx';
+import { CurrentDay } from './components/CurrentDay.jsx';
 import { Footer } from './components/Footer.jsx';
 
 // import './backgrounds/cloud-bolt.jpg';
@@ -91,6 +92,7 @@ function App() {
             searchText={searchText}
             setSearchText={setSearchText}
           />
+          <CurrentDay weatherData={weatherData} placeData={placeData} />
           <Footer weatherData={weatherData} placeData={placeData} />
         </body>
       </div>
