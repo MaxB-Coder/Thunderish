@@ -1,8 +1,8 @@
 ![Header](./public/thunderish-banner.png)
 
-## A clean and simple weather app that uses the Open-Meteo weather API (https://open-meteo.com/) and the Geoapify places API (https://www.geoapify.com/) to facilitate lookup of the current weather and 5-day forecast for a search location.
+## A weather application aimed at providing users with accurate and up-to-date weather forecasts.
 
-Overview: Thunderish is a weather application aimed at providing users with accurate and up-to-date weather forecasts. This project's goal is to create an intuitive platform that enables users to access weather information and forecasts seamlessly.
+Overview: Thunderish is a clean and simple weather app that uses the Open-Meteo weather API (https://open-meteo.com/) and the Geoapify places API (https://www.geoapify.com/) to facilitate lookup of the current weather and 5-day forecast for a search location.
 
 Inspiration: The Weather Channel, AccuWeather, Weather Underground
 
