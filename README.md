@@ -1,4 +1,4 @@
-![Header](./thunderish-banner.png)
+![Header](./public/thunderish-banner.png)
 
 Project Name: Thunderish - Your Weather Forecast Companion
 
