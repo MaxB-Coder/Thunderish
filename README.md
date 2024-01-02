@@ -18,8 +18,40 @@ Objectives:
 ![London](./public/screenshots/london.png)
 ![Paris](./public/screenshots/paris.png)
 
-## Technologies
+## Installation and Setup
 
-\*Front-end: HTML, CSS, JavaScript (React)
-Back-end: Node.js, Express.js (for API integration)
-Weather API: Meteomatics
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/MaxB-Coder/news-summary.git
+   cd news-summary
+   ```
+
+2. **Install dependencies**:
+
+   ```bash
+    npm install
+   ```
+
+3. **Run the Server**:
+
+   ```bash
+    npm run dev
+   ```
+
+Visit the local host server that is in your console to view the project!
+
+### Prerequisites
+
+- Git
+- Node.js
+
+### Technologies
+
+- React (Vite)
+- Axios
+- Vitest
+
+## Acknowledgements
+
+- The Open-Meteo and Geoapify for the APIs.
