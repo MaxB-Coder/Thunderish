@@ -54,4 +54,4 @@ Visit the local host server that is in your console to view the project!
 
 ## Acknowledgements
 
-- The Open-Meteo and Geoapify for the APIs.
+- Open-Meteo and Geoapify for the APIs.
