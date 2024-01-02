@@ -1,4 +1,4 @@
-# Thunderish
+![Header](./thunderish-banner.png)
 
 Project Name: Thunderish - Your Weather Forecast Companion
 
@@ -14,7 +14,7 @@ Objectives:
 
 Features to Implement:
 
-*User-friendly interface displaying current weather conditions with temperature, conditions, and icons.*
+_User-friendly interface displaying current weather conditions with temperature, conditions, and icons._
 
 #### User Story 1
 
@@ -66,7 +66,7 @@ So that the app is more visually appealing.
 
 #### User Story 4
 
-*Location-based weather data retrieval.*
+_Location-based weather data retrieval._
 
 ```
 As a user,
@@ -84,7 +84,7 @@ So that I can see the local data.
 
 #### User Story 5
 
-*5-day weather forecast with temperature, conditions, and icons.*
+_5-day weather forecast with temperature, conditions, and icons._
 
 ```
 As a user,
@@ -102,7 +102,7 @@ So that I can make plans with piece of mind.
 
 #### User Story 6
 
-*Real-time updates of weather conditions.*
+_Real-time updates of weather conditions._
 
 ```
 As a user,
@@ -120,6 +120,6 @@ So that I can accurately see when the weather is changing.
 
 Technologies:
 
-*Front-end: HTML, CSS, JavaScript (React)
+\*Front-end: HTML, CSS, JavaScript (React)
 Back-end: Node.js, Express.js (for API integration)
 Weather API: Meteomatics
