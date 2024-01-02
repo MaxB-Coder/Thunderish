@@ -2,7 +2,7 @@
 
 ## A weather application aimed at providing users with accurate and up-to-date weather forecasts.
 
-<a href="thunderish.vercel.app">Website Link</a>
+Website Link (thunderish.vercel.app)
 
 Overview: Thunderish is a clean and simple weather app that uses the Open-Meteo weather API (https://open-meteo.com/) and the Geoapify places API (https://www.geoapify.com/) to facilitate lookup of the current weather and 5-day forecast for a search location.
 
