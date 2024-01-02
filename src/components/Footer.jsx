@@ -1,9 +1,8 @@
+import PropTypes from 'prop-types';
 import { ICON_MAP } from '../utils/iconMap.js';
 
 export const Footer = ({ weatherData, placeData }) => {
-  const current = weatherData?.current;
   const daily = weatherData?.daily;
-  const placeName = placeData?.parsedData?.city;
 
   function getIcon(iconCode) {
     return `icons/${ICON_MAP.get(iconCode)}.svg`;
@@ -13,24 +12,6 @@ export const Footer = ({ weatherData, placeData }) => {
 
   return (
     <div className='footer'>
-      {/* <div className='today'>
-        <div className='currentTemp'>
-          <img
-            className='conditionToday'
-            src={placeData?.parsedData?.city ? getIcon(current?.iconCode) : 0}
-            alt='weather condition'
-          />
-          <h2 className='searchName'>
-            {placeData?.parsedData?.city ? placeName : 'Searching...'}
-          </h2>
-          <h1 className='searchTemp'>
-            {placeData?.parsedData?.city
-              ? Math.round(current?.currentTemp)
-              : '-'}
-            &deg;C
-          </h1>
-        </div>
-      </div> */}
       <ul className='fiveDayForecast'>
         <li className='forecastDay'>
           {DAY_FORMATTER.format(daily?.[1]?.timestamp)}
@@ -95,4 +76,21 @@ export const Footer = ({ weatherData, placeData }) => {
       </ul>
     </div>
   );
+};
+
+Footer.propTypes = {
+  weatherData: PropTypes.shape({
+    daily: PropTypes.arrayOf(
+      PropTypes.shape({
+        timestamp: PropTypes.number.isRequired,
+        iconCode: PropTypes.number.isRequired,
+        forecastTemp: PropTypes.number.isRequired,
+      })
+    ),
+  }),
+  placeData: PropTypes.shape({
+    parsedData: PropTypes.shape({
+      city: PropTypes.string.isRequired,
+    }),
+  }),
 };

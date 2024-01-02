@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-export const Header = ({ weatherData, searchText, setSearchText }) => {
+export const Header = ({ setSearchText }) => {
   const [inputText, setInputText] = useState('');
 
   function handleSubmit(e) {
@@ -8,6 +9,7 @@ export const Header = ({ weatherData, searchText, setSearchText }) => {
     setSearchText(inputText);
     e.preventDefault();
   }
+
   return (
     <div className='header'>
       <form onSubmit={handleSubmit} className='search'>
@@ -21,4 +23,8 @@ export const Header = ({ weatherData, searchText, setSearchText }) => {
       </form>
     </div>
   );
+};
+
+Header.propTypes = {
+  setSearchText: PropTypes.func.isRequired,
 };

@@ -23,54 +23,6 @@ function parsePlaceData(data) {
   return data.features[0].properties;
 }
 
-// export function getPlaceData(searchString) {
-//   const options = {
-//     method: 'GET',
-//     headers: {
-//       accept: 'application/json',
-//       Authorization: 'fsq3LDTa8q4Z/g6AUI9du2j4nW0e5hQJ4miJb6uljT/VH0E=',
-//     },
-//   };
-//   fetch(
-//     `https://api.foursquare.com/v3/places/search?query=london&categories=16062`,
-//     options
-//   )
-//     .then((response) => response.json())
-//     .then((response) => console.log(response))
-//     .catch((err) => console.error(err));
-// }
-
-// export function getPlaceData(searchString) {
-//   try {
-//     return axios
-//       .get(
-//         `https://api.foursquare.com/v3/places/search?query=paris&apiK`,
-//         {
-//           params: {
-//             query: searchString,
-//             // apiKey: 'fsq3LDTa8q4Z/g6AUI9du2j4nW0e5hQJ4miJb6uljT/VH0E=',
-//           },
-//         },
-//         {
-//           headers: {
-//             Authorization: `fsq3LDTa8q4Z/g6AUI9du2j4nW0e5hQJ4miJb6uljT/VH0E=`,
-//           },
-//         }
-//       )
-//       .then(({ data }) => {
-//         return {
-//           parsedData: parsePlaceData(data),
-//         };
-//       });
-//   } catch (error) {
-//     return error;
-//   }
-// }
-
-// function parsePlaceData(data) {
-//   return data;
-// }
-
 export function getPlaceImageData(placeID) {
   try {
     return axios
