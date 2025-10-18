@@ -20,15 +20,14 @@
 }
 
 * {
-  margin: 0px;
+  margin: 0;
 }
 
 .body {
   min-height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  background-position: bottom;
+  background-position: bottom center;
 }
 
 .blurred {
@@ -49,10 +48,6 @@
   background-color: var(--text-tertiary);
   transition: all 0.3s ease 0s;
 }
-
-/* .searchName:hover {
-  
-} */
 
 .header {
   display: flex;
@@ -75,13 +70,11 @@
 .searchSubmit {
   background-color: var(--bg-secondary);
   color: var(--text-primary) !important;
-  /* text-align: center; */
   border: 1px solid var(--text-primary);
   border-radius: 100px;
   margin-left: 1vh;
   height: 37px;
   width: 90px;
-  /* min-height: 100%; */
   transition: all 0.3s ease 0s;
 }
 
@@ -102,9 +95,14 @@
   margin: 3vh;
 }
 
+/* Normalize forecast icon sizing on large screens */
 .forecastDayIcon {
-  max-width: 100%;
+  width: auto;
+  height: 5vh; /* fixes consistent height */
   max-height: 5vh;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
 
 .currentDay {
@@ -135,4 +133,118 @@
 
 .searchTemp {
   font-size: 2em;
+}
+
+@media (max-width: 768px) {
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Perfect vertical alignment */
+    gap: 0.5rem;
+    width: 90%;
+    max-width: 400px;
+    margin: 2vh auto;
+  }
+
+  .searchBox,
+  .searchSubmit {
+    height: 42px; /* Exactly equal heights */
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 1px solid var(--text-primary);
+    display: flex;
+    align-items: center;
+  }
+
+  .searchBox {
+    flex: 1;
+    padding: 0 15px;
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .searchSubmit {
+    padding: 0 16px;
+    font-size: 0.9rem;
+    line-height: 1;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 0; /* Force consistent baseline */
+  }
+
+  /* Keep other elements centered and scaled as before */
+  .currentDay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin-top: 5vh;
+  }
+
+  .currentIconAndTemp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .currentIconAndTemp img,
+  .currentDay img,
+  .forecastDayIcon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .searchName,
+  .searchTemp {
+    text-align: center;
+    width: 100%;
+  }
+
+  .searchTemp {
+    margin-top: 0.5rem;
+  }
+
+  /* Make city name scale properly on small screens */
+  .searchName {
+    font-size: clamp(5rem, 6vw, 3rem); /* Responsive range */
+    margin-bottom: 1.5vh;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  /* Center the 5-day forecast horizontally on small screens */
+  .fiveDayForecast {
+    justify-content: center !important;
+    align-items: center;
+    margin: 0 auto;
+    padding: 15vh 0;
+    width: 100%;
+  }
+
+  /* Optionally make each day more compact and evenly spaced */
+  .forecastDay {
+    flex: 0 1 40%; /* two per row, wraps neatly */
+    margin: 1vh;
+    text-align: center;
+  }
+
+  .forecastDayIcon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0rem;
+  }
 }
