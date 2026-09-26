@@ -1,12 +1,14 @@
 import axios from 'axios';
 
+const GEOAPIFY_KEY = import.meta.env.VITE_GEOAPIFY_KEY;
+
 export function getPlaceData(searchString) {
   try {
     return axios
       .get(`https://api.geoapify.com/v1/geocode/search?`, {
         params: {
           text: searchString,
-          apiKey: '50b4e040ef33410e872dca4fbb94bfd5',
+          apiKey: GEOAPIFY_KEY,
         },
       })
       .then(({ data }) => {
@@ -29,7 +31,7 @@ export function getPlaceImageData(placeID) {
       .get(`https://api.geoapify.com/v2/place-details?`, {
         params: {
           id: placeID,
-          apiKey: '50b4e040ef33410e872dca4fbb94bfd5',
+          apiKey: GEOAPIFY_KEY,
         },
       })
       .then(({ data }) => {

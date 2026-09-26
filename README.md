@@ -23,8 +23,8 @@ Objectives:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/MaxB-Coder/news-summary.git
-   cd news-summary
+   git clone https://github.com/MaxB-Coder/Thunderish.git
+   cd Thunderish
    ```
 
 2. **Install dependencies**:
@@ -33,7 +33,15 @@ Objectives:
     npm install
    ```
 
-3. **Run the Server**:
+3. **Add your Geoapify API key**:
+
+   ```bash
+    cp .env.example .env
+   ```
+
+   Then set `VITE_GEOAPIFY_KEY` in `.env` to a key from [Geoapify](https://myprojects.geoapify.com). `.env` is git-ignored.
+
+4. **Run the Server**:
 
    ```bash
     npm run dev
