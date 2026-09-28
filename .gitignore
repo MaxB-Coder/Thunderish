@@ -4,6 +4,7 @@ API.md
 .env
 .env.*
 !.env.example
+!.env.production
 
 # Build output
 dist/
