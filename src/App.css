@@ -135,6 +135,64 @@
   font-size: 2em;
 }
 
+/* The welcome: what the app does, and a few places to try in one tap */
+.welcome {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(560px, calc(100vw - 40px));
+  transform: translate(-50%, -55%);
+  color: var(--bg-primary);
+  text-align: center;
+}
+
+.welcomeTitle {
+  margin: 0 0 12px;
+  font-size: clamp(3rem, 13vw, 6rem);
+  line-height: 1;
+}
+
+.welcomePitch {
+  margin: 0 0 24px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.welcomeCities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.welcomeCity {
+  padding: 10px 22px;
+  border: 1px solid var(--text-primary);
+  border-radius: 100px;
+  background-color: var(--bg-secondary);
+  color: #333;
+  font: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.welcomeCity:hover,
+.welcomeCity:focus-visible {
+  color: var(--bg-secondary);
+  background-color: var(--text-tertiary);
+}
+
+/* Searching, or a place that can't be found */
+.searchMessage {
+  margin: 0;
+  color: var(--bg-primary);
+  font-size: 1.6rem;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .search {
     display: flex;
@@ -218,9 +276,10 @@
     margin-top: 0.5rem;
   }
 
-  /* Make city name scale properly on small screens */
+  /* Scale the place name to the screen, so long names fit */
   .searchName {
-    font-size: clamp(5rem, 6vw, 3rem); /* Responsive range */
+    font-size: clamp(2.5rem, 13vw, 5rem);
+    overflow-wrap: anywhere;
     margin-bottom: 1.5vh;
     line-height: 1.1;
     text-align: center;
