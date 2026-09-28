@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ICON_MAP } from '../utils/iconMap.js';
+import { ICON_MAP, conditionName } from '../utils/iconMap.js';
 
 const getIcon = (iconCode) => `icons/${ICON_MAP.get(iconCode)}.svg`;
 
@@ -22,13 +22,17 @@ export const CurrentDay = ({ status, placeName, weatherData }) => {
   }
   const current = weatherData.current;
   return (
-    <div className='currentDay'>
-      <h2 className='searchName'>{placeName}</h2>
+    <section className='currentDay' aria-labelledby='place-name'>
+      <h2 id='place-name' className='searchName'>
+        {placeName}
+      </h2>
       <div className='currentIconAndTemp'>
-        <img className='conditionToday' src={getIcon(current.iconCode)} alt='weather condition' />
-        <p className='searchTemp'>{Math.round(current.currentTemp)}&deg;C</p>
+        {/* The condition is written out below, so the icon is decoration */}
+        <img className='conditionToday' src={getIcon(current.iconCode)} alt='' />
+        <p className='searchTemp'>{Math.round(current.currentTemp)}&deg;</p>
       </div>
-    </div>
+      <p className='conditionName'>{conditionName(current.iconCode)}</p>
+    </section>
   );
 };
 

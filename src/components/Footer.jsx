@@ -1,26 +1,25 @@
 import PropTypes from 'prop-types';
-import { ICON_MAP } from '../utils/iconMap.js';
+import { ICON_MAP, conditionName } from '../utils/iconMap.js';
 
 const getIcon = (iconCode) => `icons/${ICON_MAP.get(iconCode)}.svg`;
-const DAY_FORMATTER = new Intl.DateTimeFormat(undefined, { weekday: 'long' });
+const DAY_FORMATTER = new Intl.DateTimeFormat(undefined, { weekday: 'short' });
 
 /** The next four days (today is the big number above). */
 export const Footer = ({ weatherData }) => (
-  <div className='footer'>
-    <ul className='fiveDayForecast'>
+  <section className='forecast'>
+    <h3 id='forecast-title' className='forecastTitle'>
+      Next four days
+    </h3>
+    <ul className='fiveDayForecast' aria-labelledby='forecast-title'>
       {weatherData.daily.slice(1, 5).map((day) => (
         <li className='forecastDay' key={day.timestamp}>
-          {DAY_FORMATTER.format(day.timestamp)}
-          <br />
-          <br />
-          <img className='forecastDayIcon' src={getIcon(day.iconCode)} alt='weather condition' />
-          <br />
-          <br />
-          {day.forecastTemp}&deg;C
+          <span className='forecastDayName'>{DAY_FORMATTER.format(day.timestamp)}</span>
+          <img className='forecastDayIcon' src={getIcon(day.iconCode)} alt={conditionName(day.iconCode)} />
+          <span className='forecastTemp'>{day.forecastTemp}&deg;</span>
         </li>
       ))}
     </ul>
-  </div>
+  </section>
 );
 
 Footer.propTypes = {

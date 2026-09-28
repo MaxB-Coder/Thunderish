@@ -59,19 +59,23 @@ function App() {
           className='body'
           style={{
             backgroundImage: `linear-gradient(
-              0deg,
-              rgba(0, 0, 0, 0.5),
-              rgba(0, 0, 0, 0.1)
+              180deg,
+              rgba(0, 0, 0, 0.3),
+              rgba(0, 0, 0, 0.12) 40%,
+              rgba(0, 0, 0, 0.5)
             ), url(${background})`,
           }}
         >
           <Header setSearchText={setSearchText} />
-          {status === 'welcome' ? (
-            <Welcome onPick={setSearchText} />
-          ) : (
-            <CurrentDay status={status} placeName={placeName} weatherData={weatherData} />
-          )}
-          {status === 'ready' && <Footer weatherData={weatherData} />}
+          {/* Keyed by the place, so each new place eases in */}
+          <main className='content' key={status === 'ready' ? placeName : status}>
+            {status === 'welcome' ? (
+              <Welcome onPick={setSearchText} />
+            ) : (
+              <CurrentDay status={status} placeName={placeName} weatherData={weatherData} />
+            )}
+            {status === 'ready' && <Footer weatherData={weatherData} />}
+          </main>
         </div>
       </div>
     </>

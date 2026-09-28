@@ -5,23 +5,29 @@ export const Header = ({ setSearchText }) => {
   const [inputText, setInputText] = useState('');
 
   function handleSubmit(e) {
-    console.log(e.target.firstElementChild.value);
-    setSearchText(inputText);
     e.preventDefault();
+    setSearchText(inputText.trim());
   }
 
   return (
-    <div className='header'>
-      <form onSubmit={handleSubmit} className='search'>
+    <header className='header'>
+      <form onSubmit={handleSubmit} className='search' role='search'>
         <input
+          type='search'
           className='searchBox'
-          placeholder='Location...'
+          aria-label='Search for a place'
+          placeholder='Search for a place'
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-        ></input>
-        <input type='submit' className='searchSubmit' value='search'></input>
+        />
+        <button type='submit' className='searchSubmit' aria-label='Search'>
+          <svg viewBox='0 0 24 24' aria-hidden='true'>
+            <circle cx='11' cy='11' r='7' />
+            <path d='m20 20-3.5-3.5' />
+          </svg>
+        </button>
       </form>
-    </div>
+    </header>
   );
 };
 

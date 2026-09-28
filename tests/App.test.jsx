@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import App from '../src/App.jsx';
 import { getPlaceData } from '../src/utils/placesDataService.js';
@@ -9,11 +9,11 @@ vi.mock('../src/utils/weatherDataService.js', () => ({ getWeatherData: vi.fn() }
 
 const weather = {
   current: { iconCode: 0, currentTemp: 12.4 },
-  daily: Array.from({ length: 5 }, (_, i) => ({ timestamp: Date.UTC(2026, 8, 28 + i), iconCode: 0, maxTemp: 14 })),
+  daily: Array.from({ length: 5 }, (_, i) => ({ timestamp: Date.UTC(2026, 8, 28 + i, 12), iconCode: i === 2 ? 61 : 0, forecastTemp: 14 + i })),
 };
 
 function search(text) {
-  const box = screen.getByPlaceholderText('Location...');
+  const box = screen.getByRole('searchbox', { name: 'Search for a place' });
   fireEvent.change(box, { target: { value: text } });
   fireEvent.submit(box.closest('form'));
 }
@@ -41,6 +41,27 @@ describe('Thunderish', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Tokyo' }));
     expect(await screen.findByRole('heading', { name: 'Tokyo' })).toBeInTheDocument();
     expect(screen.getByText(/12/)).toBeInTheDocument();
+  });
+
+  it('describes the weather in words as well as the icon', async () => {
+    vi.mocked(getPlaceData).mockResolvedValue({ parsedData: { city: 'Tokyo', lat: 35.7, lon: 139.7 } });
+    vi.mocked(getWeatherData).mockResolvedValue(weather);
+    render(<App />);
+    search('Tokyo');
+    expect(await screen.findByText('Clear')).toBeInTheDocument();
+    expect(screen.getByText('12°')).toBeInTheDocument();
+  });
+
+  it('lists the next four days with their weather and highs', async () => {
+    vi.mocked(getPlaceData).mockResolvedValue({ parsedData: { city: 'Tokyo', lat: 35.7, lon: 139.7 } });
+    vi.mocked(getWeatherData).mockResolvedValue(weather);
+    render(<App />);
+    search('Tokyo');
+    const days = within(await screen.findByRole('list', { name: 'Next four days' })).getAllByRole('listitem');
+    expect(days).toHaveLength(4);
+    expect(days[0]).toHaveTextContent('Tue');
+    expect(days[0]).toHaveTextContent('15°');
+    expect(within(days[1]).getByRole('img', { name: 'Rain' })).toBeInTheDocument();
   });
 
   it('names a place that has no city, such as a state', async () => {
