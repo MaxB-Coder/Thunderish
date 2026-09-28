@@ -1,159 +1,252 @@
 :root {
   font-size: 16px;
-  font-family: 'Open Sans', sans-serif;
-  --text-primary: #9e9c9c;
-  --text-secondary: #aacfd0;
-  --text-tertiary: #0088a9;
-  --bg-primary: #ffffff;
-  --bg-secondary: #dddddd;
-  background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.9),
-      rgba(0, 0, 0, 0.2)
-    ),
-    url(https://i.pinimg.com/originals/c8/a1/39/c8a13970d0a773fb8b14746669a1a570.gif);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100%;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: var(--text);
+  background-color: #1b2430;
+  --text: #ffffff;
+  --text-soft: rgba(255, 255, 255, 0.78);
+  --ink: #1b2430;
+  /* Frosted glass over the photo */
+  --glass: rgba(255, 255, 255, 0.14);
+  --glass-strong: rgba(255, 255, 255, 0.22);
+  --glass-border: rgba(255, 255, 255, 0.28);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
   margin: 0;
+  box-sizing: border-box;
 }
 
 .body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 100vh;
+  min-height: 100svh;
+  padding: max(24px, env(safe-area-inset-top)) 20px max(28px, env(safe-area-inset-bottom));
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: bottom center;
+  background-position: center;
 }
 
-.blurred {
-  filter: blur(3px);
-  overflow: hidden;
+.glass,
+.search,
+.forecast,
+.welcomeCity {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
 }
 
-.footer {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  bottom: 10px;
-  width: 100%;
-}
-
-.searchSubmit:hover {
-  color: var(--bg-secondary);
-  background-color: var(--text-tertiary);
-  transition: all 0.3s ease 0s;
-}
-
+/* Search: one pill, with a round button */
 .header {
-  display: flex;
+  width: 100%;
+  max-width: 520px;
 }
 
 .search {
-  padding-top: 8vh;
-  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 5px 5px 20px;
+  border-radius: 999px;
+  transition: background-color 0.2s ease;
+}
+
+.search:focus-within {
+  background: var(--glass-strong);
 }
 
 .searchBox {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
-  border: 1px solid var(--text-primary);
-  border-radius: 100px;
-  padding: 10px 30px;
-  transition: all 0.3s ease 0s;
+  flex: 1;
+  min-width: 0;
+  padding: 10px 0;
+  border: 0;
+  outline: none;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.searchBox::placeholder {
+  color: var(--text-soft);
+}
+
+.searchBox::-webkit-search-cancel-button {
+  display: none;
 }
 
 .searchSubmit {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary) !important;
-  border: 1px solid var(--text-primary);
-  border-radius: 100px;
-  margin-left: 1vh;
-  height: 37px;
-  width: 90px;
-  transition: all 0.3s ease 0s;
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    transform 0.2s var(--ease),
+    background-color 0.2s ease;
 }
 
-.fiveDayForecast {
-  color: var(--bg-primary);
-  list-style-type: none;
+.searchSubmit svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.searchSubmit:hover {
+  background: #ffffff;
+  transform: scale(1.06);
+}
+
+.searchSubmit:focus-visible,
+.welcomeCity:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* Everything under the search, centred in what's left of the screen */
+.content {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: right;
-  align-items: center;
-  text-align: center;
-  margin-left: auto;
-  margin-right: 5vh;
-  margin-bottom: 10vh;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 520px;
+  padding: 32px 0 0;
 }
 
-.forecastDay {
-  margin: 3vh;
-}
-
-/* Normalize forecast icon sizing on large screens */
-.forecastDayIcon {
-  width: auto;
-  height: 5vh; /* fixes consistent height */
-  max-height: 5vh;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-
+/* Today */
 .currentDay {
-  display: flex-column;
-  color: var(--bg-primary);
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -70%);
+  text-align: center;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
+  animation: rise 0.6s var(--ease) both;
 }
 
 .searchName {
-  text-align: center;
-  color: var(--bg-primary);
-  margin-bottom: 1vh;
-  font-size: 10em;
+  font-size: clamp(2.5rem, 10vw, 4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
 }
 
 .currentIconAndTemp {
   display: flex;
-  justify-content: end;
-  max-height: 5vh;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
 }
 
 .conditionToday {
-  margin-left: 85%;
+  width: clamp(56px, 16vw, 80px);
+  height: clamp(56px, 16vw, 80px);
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.2));
 }
 
 .searchTemp {
-  font-size: 2em;
+  font-size: clamp(5rem, 24vw, 7.5rem);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.conditionName {
+  margin-top: 4px;
+  color: var(--text-soft);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* The next four days, on one frosted card */
+.forecast {
+  padding: 16px 12px 20px;
+  border-radius: 24px;
+  animation: rise 0.6s 0.08s var(--ease) both;
+}
+
+.forecastTitle {
+  margin: 0 8px 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text-soft);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fiveDayForecast {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.forecastDay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.forecastDay + .forecastDay {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.forecastDayName {
+  color: var(--text-soft);
+  font-weight: 500;
+}
+
+.forecastDayIcon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.forecastTemp {
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 /* The welcome: what the app does, and a few places to try in one tap */
 .welcome {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: min(560px, calc(100vw - 40px));
-  transform: translate(-50%, -55%);
-  color: var(--bg-primary);
   text-align: center;
+  animation: rise 0.6s var(--ease) both;
 }
 
 .welcomeTitle {
-  margin: 0 0 12px;
-  font-size: clamp(3rem, 13vw, 6rem);
+  margin: 0 0 14px;
+  font-size: clamp(3.25rem, 15vw, 5.5rem);
+  font-weight: 800;
   line-height: 1;
+  letter-spacing: -0.035em;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
 }
 
 .welcomePitch {
-  margin: 0 0 24px;
+  max-width: 26rem;
+  margin: 0 auto 26px;
+  color: var(--text-soft);
   font-size: 1.1rem;
   line-height: 1.5;
 }
@@ -169,141 +262,57 @@
 }
 
 .welcomeCity {
-  padding: 10px 22px;
-  border: 1px solid var(--text-primary);
-  border-radius: 100px;
-  background-color: var(--bg-secondary);
-  color: #333;
+  padding: 11px 22px;
+  border-radius: 999px;
+  color: var(--text);
   font: inherit;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease 0s;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s var(--ease);
 }
 
-.welcomeCity:hover,
-.welcomeCity:focus-visible {
-  color: var(--bg-secondary);
-  background-color: var(--text-tertiary);
+.welcomeCity:hover {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+  transform: translateY(-1px);
 }
 
 /* Searching, or a place that can't be found */
 .searchMessage {
-  margin: 0;
-  color: var(--bg-primary);
-  font-size: 1.6rem;
+  color: var(--text);
+  font-size: 1.4rem;
+  font-weight: 500;
   text-align: center;
 }
 
-@media (max-width: 768px) {
-  .search {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Perfect vertical alignment */
-    gap: 0.5rem;
-    width: 90%;
-    max-width: 400px;
-    margin: 2vh auto;
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (min-width: 900px) {
+  .content {
+    max-width: 600px;
   }
 
-  .searchBox,
-  .searchSubmit {
-    height: 42px; /* Exactly equal heights */
-    box-sizing: border-box;
-    border-radius: 20px;
-    border: 1px solid var(--text-primary);
-    display: flex;
-    align-items: center;
-  }
-
-  .searchBox {
-    flex: 1;
-    padding: 0 15px;
-    font-size: 1rem;
-    line-height: 1;
-  }
-
-  .searchSubmit {
-    padding: 0 16px;
-    font-size: 0.9rem;
-    line-height: 1;
-    background-color: var(--bg-secondary);
-    color: var(--text-primary) !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    top: 0; /* Force consistent baseline */
-  }
-
-  /* Keep other elements centered and scaled as before */
-  .currentDay {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin-top: 5vh;
-  }
-
-  .currentIconAndTemp {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1rem;
-  }
-
-  .currentIconAndTemp img,
-  .currentDay img,
-  .forecastDayIcon {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-  }
-
-  .searchName,
-  .searchTemp {
-    text-align: center;
-    width: 100%;
-  }
-
-  .searchTemp {
-    margin-top: 0.5rem;
-  }
-
-  /* Scale the place name to the screen, so long names fit */
-  .searchName {
-    font-size: clamp(2.5rem, 13vw, 5rem);
-    overflow-wrap: anywhere;
-    margin-bottom: 1.5vh;
-    line-height: 1.1;
-    text-align: center;
-  }
-
-  /* Center the 5-day forecast horizontally on small screens */
-  .fiveDayForecast {
-    justify-content: center !important;
-    align-items: center;
-    margin: 0 auto;
-    padding: 1vh 0;
-    width: 100%;
-  }
-
-  /* Optionally make each day more compact and evenly spaced */
-  .forecastDay {
-    flex: 0 1 40%; /* two per row, wraps neatly */
-    margin: 1vh;
-    text-align: center;
+  .forecast {
+    padding: 20px 16px 24px;
   }
 
   .forecastDayIcon {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 0rem;
+    width: 44px;
+    height: 44px;
   }
 }

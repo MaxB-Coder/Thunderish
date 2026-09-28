@@ -16,3 +16,16 @@ function addMapping(values, icon) {
     ICON_MAP.set(value, icon);
   });
 }
+
+/** Each icon's weather in words: the label under the temperature, and the icons' alt text. */
+const CONDITION_NAMES = {
+  sun: 'Clear',
+  'cloud-sun': 'Partly cloudy',
+  cloud: 'Cloudy',
+  smog: 'Fog',
+  'cloud-shower-heavy': 'Rain',
+  snowflake: 'Snow',
+  'cloud-bolt': 'Thunderstorm',
+};
+
+export const conditionName = (iconCode) => CONDITION_NAMES[ICON_MAP.get(iconCode)] ?? 'Unknown';
