@@ -18,10 +18,16 @@ function App() {
   // welcome (nothing searched yet), loading, ready or notFound
   const [status, setStatus] = useState('welcome');
 
+  /** Starts a search: the effect below fetches the place and its weather. */
+  function search(text) {
+    if (!text || text === searchText) return;
+    setSearchText(text);
+    setStatus('loading');
+  }
+
   useEffect(() => {
     if (!searchText) return;
     let current = true;
-    setStatus('loading');
     (async () => {
       try {
         const place = (await getPlaceData(searchText)).parsedData;
@@ -66,11 +72,11 @@ function App() {
             ), url(${background})`,
           }}
         >
-          <Header setSearchText={setSearchText} />
+          <Header setSearchText={search} />
           {/* Keyed by the place, so each new place eases in */}
           <main className='content' key={status === 'ready' ? placeName : status}>
             {status === 'welcome' ? (
-              <Welcome onPick={setSearchText} />
+              <Welcome onPick={search} />
             ) : (
               <CurrentDay status={status} placeName={placeName} weatherData={weatherData} />
             )}
